@@ -273,7 +273,7 @@ class Broker(broker.Broker):
 
     def setUseAdjustedValues(self, useAdjusted, deprecationCheck=None):
         # Deprecated since v0.15
-        if not self.__barFeed.barsHaveAdjClose():
+        if useAdjusted and not self.__barFeed.barsHaveAdjClose():
             raise Exception("The barfeed doesn't support adjusted close values")
         if deprecationCheck is None:
             warninghelpers.deprecation_warning(
